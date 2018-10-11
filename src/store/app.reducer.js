@@ -1,6 +1,4 @@
-import type {
-  TypeActionToggleLoad
-} from "@src/types"
+import type { TypeActionToggleLoad } from "@src/types"
 
 const initialState: any = {
   isLoading: false,
@@ -11,7 +9,8 @@ const reducer = (
   state: TypeApiState = initialState,
   action: TypeApiAction
 ): any => {
-  if (action.type === "TOGGLE_LOAD") { //TODO pour un loader global , à implémenter côté ui
+  if (action.type === "TOGGLE_LOAD") {
+    //TODO pour un loader global , à implémenter côté ui
     return {
       ...state,
       isLoading: (action: TypeActionToggleLoad).isLoading

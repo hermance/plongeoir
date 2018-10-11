@@ -1,1 +1,12 @@
-{}
+{
+  "login":{
+    "title":"title login",
+    "button":"Login"
+  } ,
+  "home":{
+    "title":"title home"
+  } ,
+  "settings":{
+    "title":"title settings"
+  }
+}

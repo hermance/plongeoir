@@ -7,7 +7,8 @@ function toggleLoad(isLoading: boolean) {
 }
 
 const app = {
-  toggleLoad: (isLoading: boolean) => (dispatch: Dispatch<any>): void => {//TODO pour un loader global , à implémenter côté ui
+  toggleLoad: (isLoading: boolean) => (dispatch: Dispatch<any>): void => {
+    //TODO pour un loader global , à implémenter côté ui
     dispatch(toggleLoad(isLoading))
   }
   //todo faire l'action pour le login

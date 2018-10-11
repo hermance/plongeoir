@@ -5,10 +5,7 @@ const USER_ENDPOINT = "/user"
 const LOGIN_ENDPOINT = "/login"
 
 class UserService {
-  static login = (
-    email: string,
-    password: string
-  ): Promise<*> => {
+  static login = (email: string, password: string): Promise<*> => {
     return new Promise(function(resolve, reject) {
       //TODO appel WS
     })

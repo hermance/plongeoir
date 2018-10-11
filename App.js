@@ -6,8 +6,8 @@ import { Provider, connect } from "react-redux"
 
 registerScreens = (store: any) => {
     Navigation.registerComponent('LoginScreen', () => LoginScreen, store, Provider);
-    Navigation.registerComponent('HomeScreen', () => HomeScreen);
-    Navigation.registerComponent('SettingsScreen', () => SettingsScreen);
+    Navigation.registerComponent('HomeScreen', () => HomeScreen, store, Provider);
+    Navigation.registerComponent('SettingsScreen', () => SettingsScreen, store, Provider);
 }
 export default (store: any) => {
     registerScreens(store)

@@ -1,3 +1,3 @@
 export default {
-    //TODO actions dédiées
+  //TODO actions dédiées
 }

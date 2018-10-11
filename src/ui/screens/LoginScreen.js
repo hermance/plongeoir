@@ -29,18 +29,28 @@ class LoginScreen extends Component {
 
   render() {
     //todo if login, go directly on tabbase app => need redux
+    const { i18n } = this.props
     return (
-      <View>
-        <Text>Hello world!</Text>
-        <Button onPress={this.launchConnectedApp} title={"Click me"} />
+      <View style={{ marginTop: 20 }}>
+        <Text>{i18n.t("login.title")}</Text>
+        <Button
+          onPress={this.launchConnectedApp}
+          title={i18n.t("login.button")}
+        />
       </View>
     )
   }
 }
 
-const mapStateToProps = (state: any) => {return {}}//TODO
-const mapDispatchToProps = () => (dispatch: any) => {return {}} //TODO
+const mapStateToProps = (state: any) => {
+  return {
+    i18n: state.i18n
+  }
+}
+const mapDispatchToProps = () => (dispatch: any) => {
+  return {}
+}
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(LoginScreen)

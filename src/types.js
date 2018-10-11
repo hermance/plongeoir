@@ -6,10 +6,6 @@ type TypeActionToggleLoad = {|
   +isLoading: boolean
 |}
 
-type TypeApiAction =
-  TypeActionToggleLoad
+type TypeApiAction = TypeActionToggleLoad
 
-export type {
-  TypeApiAction,
-  TypeActionToggleLoad
-}
+export type { TypeApiAction, TypeActionToggleLoad }

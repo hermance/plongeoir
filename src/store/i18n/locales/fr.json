@@ -1,1 +1,12 @@
-{}
+{
+ "login":{
+   "title":"titre connexion",
+   "button":"Connexion"
+ } ,
+  "home":{
+    "title":"titre home"
+  } ,
+  "settings":{
+    "title":"titre réglages"
+  }
+}

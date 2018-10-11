@@ -7,6 +7,8 @@ class LoginScreen extends Component {
   static navigatorStyle = { navBarHidden: true, tabBarHidden: true }
 
   launchConnectedApp = () => {
+      //todo launch action to save in store the user data, and if setted, call directly this function
+      //to avoid reconnect every time
     Navigation.startTabBasedApp({
       tabs: [
         {

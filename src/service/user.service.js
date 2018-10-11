@@ -8,6 +8,7 @@ class UserService {
   static login = (email: string, password: string): Promise<*> => {
     return new Promise(function(resolve, reject) {
       //TODO appel WS
+        //TODO test avec https://my-json-server.typicode.com/ ? https://reqres.in/ ?
     })
   }
 }

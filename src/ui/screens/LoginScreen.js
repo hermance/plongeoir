@@ -1,8 +1,9 @@
 import React, { Component } from "react"
 import { Text, View, Button } from "react-native"
 import { Navigation } from "react-native-navigation"
+import { connect } from "react-redux"
 
-export default class LoginScreen extends Component {
+class LoginScreen extends Component {
   static navigatorStyle = { navBarHidden: true, tabBarHidden: true }
 
   launchConnectedApp = () => {
@@ -36,3 +37,10 @@ export default class LoginScreen extends Component {
     )
   }
 }
+
+const mapStateToProps = (state: any) => {return {}}//TODO
+const mapDispatchToProps = () => (dispatch: any) => {return {}} //TODO
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LoginScreen)

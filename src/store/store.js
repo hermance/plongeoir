@@ -31,7 +31,6 @@ const myCreateStore = (env: TypeEnv, onRehydrate: () => void) => {
   )
 
   persistStore(store, undefined, () => {
-    logger.info("Rehydratation done")
     if (onRehydrate) {
       onRehydrate()
     }

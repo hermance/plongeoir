@@ -18,8 +18,7 @@ const myCreateStore = (env: TypeEnv, onRehydrate: () => void) => {
         // Il redux-form is used, do not persist forms
         "form",
         // the same for navigation if present.
-        "nav",
-        "api"
+        "nav"
       ]
     },
     reducers

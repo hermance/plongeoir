@@ -2,11 +2,13 @@ import React, { Component } from "react"
 import { Text, View, Button, TextInput } from "react-native"
 import { Navigation } from "react-native-navigation"
 import { connect } from "react-redux"
+import appActions from "./../../store/app.action-creator"
 import type TypeI18n from "./../../store/i18n/I18NReducer"
 //todo faire des package.json pour avoir du @store etc
 
 type Props = {|
-  +i18n: TypeI18n
+  +i18n: TypeI18n,
+  login: (email: string, password: string) => Promise<*>
 |}
 
 type State = {|
@@ -22,9 +24,19 @@ class LoginScreen extends React.PureComponent<Props, State> {
     password: ""
   }
 
-  launchConnectedApp = () => {
-    //todo launch action to save in store the user data, and if setted, call directly this function
-    //to avoid reconnect every time
+  connect = () => {
+    const { email, password } = this.state
+    const { login } = this.props
+    login(email, password).then(res => {
+      if (res) {
+        this.launchtabBasedApp()
+      } else {
+        alert("login failded") //TODO gestion d'erreur
+      }
+    })
+  }
+
+  launchtabBasedApp = () => {
     Navigation.startTabBasedApp({
       tabs: [
         {
@@ -46,7 +58,7 @@ class LoginScreen extends React.PureComponent<Props, State> {
   }
 
   render() {
-    //todo if login, go directly on tabbase app => need redux
+    //TODO si on a un user dans le store, appeler launchtabBasedApp, sinon render
     const { i18n } = this.props
     return (
       <View style={{ marginTop: 20 }}>
@@ -54,17 +66,16 @@ class LoginScreen extends React.PureComponent<Props, State> {
         <TextInput
           placeholder={i18n.t("login.email")}
           value={this.state.email}
+          autoCapitalize="none"
           onChangeText={text => this.setState({ email: text })}
         />
         <TextInput
           placeholder={i18n.t("login.password")}
           value={this.state.password}
+          autoCapitalize="none"
           onChangeText={text => this.setState({ password: text })}
         />
-        <Button
-          onPress={this.launchConnectedApp}
-          title={i18n.t("login.button")}
-        />
+        <Button onPress={this.connect} title={i18n.t("login.button")} />
       </View>
     )
   }
@@ -76,7 +87,10 @@ const mapStateToProps = (state: any) => {
   }
 }
 const mapDispatchToProps = () => (dispatch: any) => {
-  return {}
+  return {
+    login: (email: string, password: string) =>
+      dispatch(appActions.login(email, password))
+  }
 }
 export default connect(
   mapStateToProps,

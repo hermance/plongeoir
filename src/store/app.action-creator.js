@@ -16,14 +16,15 @@ function login(user) {
   }
 }
 
-const app = {
+const appActions = {
   login: (email: string, password: string) => (
     dispatch: Dispatch<any>
   ): void => {
     return UserService.login(email, password)
       .then(user => {
-        alert(JSON.stringify(user))
-        dispatch(login(user))
+        if (user) {
+          return dispatch(login(user))
+        }
         return Promise.resolve()
       })
       .catch(err => Promise.reject(err))
@@ -34,4 +35,4 @@ const app = {
   }
 }
 
-export default app
+export default appActions

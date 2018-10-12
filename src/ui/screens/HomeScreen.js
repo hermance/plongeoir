@@ -1,15 +1,24 @@
 import React, { Component } from "react"
 import { Text, View } from "react-native"
 import { connect } from "react-redux"
+import type TypeI18n from "../../store/i18n/I18NReducer"
 
-class HomeScreen extends Component {
+type Props = {|
+  +i18n: TypeI18n,
+  user: any // todo créer les types
+|}
+
+class HomeScreen extends React.PureComponent<Props, void> {
   static navigatorStyle = { tabBarHidden: false, navBarHidden: true }
 
   render() {
-    const { i18n } = this.props
+    const { i18n, user } = this.props
     return (
       <View style={{ marginTop: 20 }}>
         <Text>{i18n.t("home.title")}</Text>
+        <Text>
+          {i18n.t("home.hello")} {user.firstname}
+        </Text>
       </View>
     )
   }
@@ -17,7 +26,8 @@ class HomeScreen extends Component {
 
 const mapStateToProps = (state: any) => {
   return {
-    i18n: state.i18n
+    i18n: state.i18n,
+    user: state.app.user
   }
 }
 const mapDispatchToProps = () => (dispatch: any) => {

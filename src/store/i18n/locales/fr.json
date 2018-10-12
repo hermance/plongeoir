@@ -6,7 +6,8 @@
    "password":"password"
  } ,
   "home":{
-    "title":"titre home"
+    "title":"titre home",
+    "hello":"Hello, "
   } ,
   "settings":{
     "title":"titre réglages"

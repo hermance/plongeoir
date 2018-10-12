@@ -10,6 +10,7 @@
     "hello":"Hello, "
   } ,
   "settings":{
-    "title":"titre réglages"
+    "title":"titre réglages",
+    "logout":"Déconnexion"
   }
 }

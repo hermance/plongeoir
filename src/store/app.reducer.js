@@ -1,4 +1,4 @@
-import { LOGIN, TOGGLE_LOAD } from "./app.action-creator"
+import { LOGIN, TOGGLE_LOAD, LOGOUT } from "./app.action-creator"
 
 const initialState: any = {
   isLoading: false
@@ -19,6 +19,12 @@ const reducer = (
     return {
       ...state,
       user: action.user
+    }
+  }
+  if (action.type === LOGOUT) {
+    return {
+      ...state,
+      user: null
     }
   }
   return initialState

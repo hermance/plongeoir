@@ -10,6 +10,7 @@
     "hello":"Hello, "
   } ,
   "settings":{
-    "title":"title settings"
+    "title":"title settings",
+    "logout":"logout"
   }
 }

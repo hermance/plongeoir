@@ -1,15 +1,13 @@
 package com.plongeoir5;
 
+import android.support.annotation.Nullable;
+import android.os.Bundle;
 import com.reactnativenavigation.controllers.SplashActivity;
 
 public class MainActivity extends SplashActivity {
 
-    /**
-     * Returns the name of the main component registered from JavaScript.
-     * This is used to schedule rendering of the component.
-     */
     @Override
-    protected String getMainComponentName() {
-        return "plongeoir5";
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 }

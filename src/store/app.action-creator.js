@@ -2,6 +2,7 @@ import type { Dispatch } from "redux"
 import UserService from "../service/user.service"
 export const TOGGLE_LOAD = "TOGGLE_LOAD"
 export const LOGIN = "LOGIN"
+export const LOGOUT = "LOGOUT"
 
 function toggleLoad(isLoading: boolean) {
   return {
@@ -13,6 +14,11 @@ function login(user) {
   return {
     type: LOGIN,
     user
+  }
+}
+function logout() {
+  return {
+    type: LOGOUT,
   }
 }
 
@@ -29,6 +35,11 @@ const appActions = {
       })
       .catch(err => Promise.reject(err))
   },
+    logout: () => (
+        dispatch: Dispatch<any>
+    ): void => {
+        dispatch(logout())
+    },
   toggleLoad: (isLoading: boolean) => (dispatch: Dispatch<any>): void => {
     //TODO pour un loader global , à implémenter côté ui
     dispatch(toggleLoad(isLoading))

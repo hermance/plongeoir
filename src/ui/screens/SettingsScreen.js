@@ -31,7 +31,7 @@ class SettingsScreen extends React.PureComponent<Props, void> {
   render() {
     const { i18n, user } = this.props
     return (
-      <View style={{ marginTop: 60 }}>
+      <View style={{ marginTop: 30 }}>
         <Text>{i18n.t("settings.title")}</Text>
         <Button
           title={i18n.t("settings.logout")}

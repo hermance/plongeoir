@@ -29,7 +29,7 @@ class SettingsScreen extends React.PureComponent<Props, void> {
   }
 
   render() {
-    const { i18n } = this.props
+    const { i18n, user } = this.props
     return (
       <View style={{ marginTop: 60 }}>
         <Text>{i18n.t("settings.title")}</Text>
@@ -37,13 +37,17 @@ class SettingsScreen extends React.PureComponent<Props, void> {
           title={i18n.t("settings.logout")}
           onPress={this.logoutAndGoToLogin}
         />
+        <Text>{user && user.firstname}</Text>
+        <Text>{user && user.lastname}</Text>
+        <Text>{user && user.email}</Text>
       </View>
     )
   }
 }
 const mapStateToProps = (state: any) => {
   return {
-    i18n: state.i18n
+    i18n: state.i18n,
+    user: state.app.user
   }
 }
 const mapDispatchToProps = () => (dispatch: any) => {

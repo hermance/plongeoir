@@ -1,23 +1,26 @@
-import type { TypeActionToggleLoad } from "@src/types"
+import { LOGIN, TOGGLE_LOAD } from "./app.action-creator"
 
 const initialState: any = {
-  isLoading: false,
-  deeplink: null
+  isLoading: false
 }
 
 const reducer = (
   state: TypeApiState = initialState,
   action: TypeApiAction
 ): any => {
-  if (action.type === "TOGGLE_LOAD") {
+  if (action.type === TOGGLE_LOAD) {
     //TODO pour un loader global , à implémenter côté ui
     return {
       ...state,
-      isLoading: (action: TypeActionToggleLoad).isLoading
+      isLoading: action.isLoading
     }
   }
-  //todo faire le reducer pour le login
-
+  if (action.type === LOGIN) {
+    return {
+      ...state,
+      user: action.user
+    }
+  }
   return initialState
 }
 

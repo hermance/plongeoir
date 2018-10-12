@@ -1,7 +1,9 @@
 {
  "login":{
    "title":"titre connexion",
-   "button":"Connexion"
+   "button":"Connexion",
+   "email":"email",
+   "password":"password"
  } ,
   "home":{
     "title":"titre home"

@@ -1,17 +1,37 @@
+import type { Dispatch } from "redux"
+import UserService from "../service/user.service"
 export const TOGGLE_LOAD = "TOGGLE_LOAD"
+export const LOGIN = "LOGIN"
+
 function toggleLoad(isLoading: boolean) {
   return {
     type: TOGGLE_LOAD,
     isLoading
   }
 }
+function login(user) {
+  return {
+    type: LOGIN,
+    user
+  }
+}
 
 const app = {
+  login: (email: string, password: string) => (
+    dispatch: Dispatch<any>
+  ): void => {
+    return UserService.login(email, password)
+      .then(user => {
+        alert(JSON.stringify(user))
+        dispatch(login(user))
+        return Promise.resolve()
+      })
+      .catch(err => Promise.reject(err))
+  },
   toggleLoad: (isLoading: boolean) => (dispatch: Dispatch<any>): void => {
     //TODO pour un loader global , à implémenter côté ui
     dispatch(toggleLoad(isLoading))
   }
-  //todo faire l'action pour le login
 }
 
 export default app

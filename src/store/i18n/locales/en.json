@@ -1,7 +1,9 @@
 {
   "login":{
     "title":"title login",
-    "button":"Login"
+    "button":"Login",
+    "email":"email",
+    "password":"password"
   } ,
   "home":{
     "title":"title home"

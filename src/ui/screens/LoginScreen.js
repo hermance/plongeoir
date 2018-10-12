@@ -1,14 +1,30 @@
 import React, { Component } from "react"
-import { Text, View, Button } from "react-native"
+import { Text, View, Button, TextInput } from "react-native"
 import { Navigation } from "react-native-navigation"
 import { connect } from "react-redux"
+import type TypeI18n from "./../../store/i18n/I18NReducer"
+//todo faire des package.json pour avoir du @store etc
 
-class LoginScreen extends Component {
+type Props = {|
+  +i18n: TypeI18n
+|}
+
+type State = {|
+  password: string,
+  email: string
+|}
+
+class LoginScreen extends React.PureComponent<Props, State> {
   static navigatorStyle = { navBarHidden: true, tabBarHidden: true }
 
+  state = {
+    email: "",
+    password: ""
+  }
+
   launchConnectedApp = () => {
-      //todo launch action to save in store the user data, and if setted, call directly this function
-      //to avoid reconnect every time
+    //todo launch action to save in store the user data, and if setted, call directly this function
+    //to avoid reconnect every time
     Navigation.startTabBasedApp({
       tabs: [
         {
@@ -35,6 +51,16 @@ class LoginScreen extends Component {
     return (
       <View style={{ marginTop: 20 }}>
         <Text>{i18n.t("login.title")}</Text>
+        <TextInput
+          placeholder={i18n.t("login.email")}
+          value={this.state.email}
+          onChangeText={text => this.setState({ email: text })}
+        />
+        <TextInput
+          placeholder={i18n.t("login.password")}
+          value={this.state.password}
+          onChangeText={text => this.setState({ password: text })}
+        />
         <Button
           onPress={this.launchConnectedApp}
           title={i18n.t("login.button")}

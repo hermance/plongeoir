@@ -3,6 +3,7 @@ import UserService from "../service/user.service"
 export const TOGGLE_LOAD = "TOGGLE_LOAD"
 export const LOGIN = "LOGIN"
 export const LOGOUT = "LOGOUT"
+import type UserType from "./types"
 
 function toggleLoad(isLoading: boolean) {
   return {
@@ -10,7 +11,7 @@ function toggleLoad(isLoading: boolean) {
     isLoading
   }
 }
-function login(user) {
+function login(user: UserType) {
   return {
     type: LOGIN,
     user

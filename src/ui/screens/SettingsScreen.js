@@ -4,10 +4,12 @@ import { connect } from "react-redux"
 import appActions from "../../store/app.action-creator"
 import type TypeI18n from "../../store/i18n/I18NReducer"
 import { Navigation } from "react-native-navigation"
+import type UserType from "../../store/types"
 
 type Props = {|
   +i18n: TypeI18n,
-  logout: () => void
+  logout: () => void,
+  user: UserType
 |}
 
 class SettingsScreen extends React.PureComponent<Props, void> {

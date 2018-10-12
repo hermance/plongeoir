@@ -4,12 +4,13 @@ import { Navigation } from "react-native-navigation"
 import { connect } from "react-redux"
 import appActions from "./../../store/app.action-creator"
 import type TypeI18n from "./../../store/i18n/I18NReducer"
+import type UserType from "../../store/types"
 //todo faire des package.json pour avoir du @store etc
 
 type Props = {|
   +i18n: TypeI18n,
   login: (email: string, password: string) => Promise<*>,
-  user: any //Todo faire la gestion des types
+  user: UserType
 |}
 
 type State = {|

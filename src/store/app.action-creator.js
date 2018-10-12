@@ -18,7 +18,7 @@ function login(user) {
 }
 function logout() {
   return {
-    type: LOGOUT,
+    type: LOGOUT
   }
 }
 
@@ -35,11 +35,9 @@ const appActions = {
       })
       .catch(err => Promise.reject(err))
   },
-    logout: () => (
-        dispatch: Dispatch<any>
-    ): void => {
-        dispatch(logout())
-    },
+  logout: () => (dispatch: Dispatch<any>): void => {
+    return dispatch(logout())
+  },
   toggleLoad: (isLoading: boolean) => (dispatch: Dispatch<any>): void => {
     //TODO pour un loader global , à implémenter côté ui
     dispatch(toggleLoad(isLoading))

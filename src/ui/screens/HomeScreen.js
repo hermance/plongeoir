@@ -17,7 +17,7 @@ class HomeScreen extends React.PureComponent<Props, void> {
       <View style={{ marginTop: 20 }}>
         <Text>{i18n.t("home.title")}</Text>
         <Text>
-          {i18n.t("home.hello")} {user.firstname}
+          {i18n.t("home.hello")} {user && user.firstname}
         </Text>
       </View>
     )

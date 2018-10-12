@@ -24,7 +24,7 @@ const reducer = (
   if (action.type === LOGOUT) {
     return {
       ...state,
-      user: null
+      user: undefined
     }
   }
   return initialState

@@ -8,7 +8,8 @@ import type TypeI18n from "./../../store/i18n/I18NReducer"
 
 type Props = {|
   +i18n: TypeI18n,
-  login: (email: string, password: string) => Promise<*>
+  login: (email: string, password: string) => Promise<*>,
+  user: any //Todo faire la gestion des types
 |}
 
 type State = {|
@@ -59,31 +60,37 @@ class LoginScreen extends React.PureComponent<Props, State> {
 
   render() {
     //TODO si on a un user dans le store, appeler launchtabBasedApp, sinon render
-    const { i18n } = this.props
-    return (
-      <View style={{ marginTop: 20 }}>
-        <Text>{i18n.t("login.title")}</Text>
-        <TextInput
-          placeholder={i18n.t("login.email")}
-          value={this.state.email}
-          autoCapitalize="none"
-          onChangeText={text => this.setState({ email: text })}
-        />
-        <TextInput
-          placeholder={i18n.t("login.password")}
-          value={this.state.password}
-          autoCapitalize="none"
-          onChangeText={text => this.setState({ password: text })}
-        />
-        <Button onPress={this.connect} title={i18n.t("login.button")} />
-      </View>
-    )
+    const { i18n, user } = this.props
+    if (user !== null && !user) {
+      return (
+        <View style={{ marginTop: 20 }}>
+          <Text>{i18n.t("login.title")}</Text>
+          <TextInput
+            placeholder={i18n.t("login.email")}
+            value={this.state.email}
+            autoCapitalize="none"
+            onChangeText={text => this.setState({ email: text })}
+          />
+          <TextInput
+            placeholder={i18n.t("login.password")}
+            value={this.state.password}
+            autoCapitalize="none"
+            onChangeText={text => this.setState({ password: text })}
+          />
+          <Button onPress={this.connect} title={i18n.t("login.button")} />
+        </View>
+      )
+    } else {
+      this.launchtabBasedApp()
+      return null
+    }
   }
 }
 
 const mapStateToProps = (state: any) => {
   return {
-    i18n: state.i18n
+    i18n: state.i18n,
+    user: state.app.user
   }
 }
 const mapDispatchToProps = () => (dispatch: any) => {

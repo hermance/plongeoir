@@ -27,8 +27,10 @@ const appActions = {
   login: (email: string, password: string) => (
     dispatch: Dispatch<any>
   ): void => {
+    dispatch(toggleLoad(true))
     return UserService.login(email, password)
       .then(user => {
+        dispatch(toggleLoad(false))
         if (user) {
           return dispatch(login(user))
         }

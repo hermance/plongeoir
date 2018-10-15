@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Text, View, Button, TextInput } from "react-native"
+import { Text, View, ActivityIndicator, TextInput } from "react-native"
 import { Navigation } from "react-native-navigation"
 import { connect } from "react-redux"
 import appActions from "./../../store/app.action-creator"
@@ -12,7 +12,8 @@ import colors from "../common/colors"
 type Props = {|
   +i18n: TypeI18n,
   login: (email: string, password: string) => Promise<*>,
-  user: UserType
+  user: UserType,
+  isLoading: boolean
 |}
 
 type State = {|
@@ -65,7 +66,7 @@ class LoginScreen extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { i18n, user } = this.props
+    const { i18n, user, isLoading } = this.props
     const { noResult } = this.state
     if (user !== null && !user) {
       const inputBorderColor = noResult ? colors.red : colors.blue
@@ -81,6 +82,8 @@ class LoginScreen extends React.PureComponent<Props, State> {
               placeholder={i18n.t("login.email")}
               value={this.state.email}
               autoCapitalize="none"
+              textContentType="emailAddress"
+              keyboardType="email-address"
               onChangeText={text => this.setState({ email: text })}
             />
             <TextInput
@@ -88,6 +91,8 @@ class LoginScreen extends React.PureComponent<Props, State> {
               placeholder={i18n.t("login.password")}
               value={this.state.password}
               autoCapitalize="none"
+              textContentType="password"
+              secureTextEntry={true}
               onChangeText={text => this.setState({ password: text })}
             />
             <View style={styles.classicButton}>
@@ -95,6 +100,12 @@ class LoginScreen extends React.PureComponent<Props, State> {
                 {i18n.t("login.button")}{" "}
               </Text>
             </View>
+            <ActivityIndicator
+              style={styles.loader}
+              size="large"
+              animating={isLoading}
+              color={colors.blue}
+            />
           </View>
         </View>
       )
@@ -108,6 +119,7 @@ class LoginScreen extends React.PureComponent<Props, State> {
 const mapStateToProps = (state: any) => {
   return {
     i18n: state.i18n,
+    isLoading: state.app.isLoading,
     user: state.app.user
   }
 }

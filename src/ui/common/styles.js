@@ -45,6 +45,11 @@ const styles = StyleSheet.create({
   classicButtonText: {
     color: colors.white,
     fontSize: 18
+  },
+  loader: {
+    position: "absolute",
+    top: DEVICE_HEIGHT / 2 - 30,
+    left: DEVICE_WIDTH / 2 - 30
   }
 })
 export default styles

@@ -27,6 +27,21 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     marginTop: 20
+  },
+  classicButton: {
+    alignItems: "center",
+    width: DEVICE_WIDTH - 50,
+    backgroundColor: colors.blue,
+    borderRadius: 25,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginTop: 20
+  },
+  classicButtonText: {
+    color: colors.white,
+    fontSize: 18
   }
 })
 export default styles

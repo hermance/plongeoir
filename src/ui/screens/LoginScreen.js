@@ -81,7 +81,11 @@ class LoginScreen extends React.PureComponent<Props, State> {
               autoCapitalize="none"
               onChangeText={text => this.setState({ password: text })}
             />
-            <Button onPress={this.connect} title={i18n.t("login.button")} />
+            <View style={styles.classicButton}>
+              <Text style={styles.classicButtonText} onPress={this.connect}>
+                {i18n.t("login.button")}{" "}
+              </Text>
+            </View>
           </View>
         </View>
       )

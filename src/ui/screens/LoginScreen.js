@@ -46,7 +46,7 @@ class LoginScreen extends React.PureComponent<Props, State> {
   }
 
   goToRegister = () => {
-    //TODO go to register screen
+    //TODO go to register screen test
   }
 
   launchtabBasedApp = () => {

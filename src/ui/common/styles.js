@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
   classicButton: {
     alignItems: "center",
     width: DEVICE_WIDTH - 50,
-    backgroundColor: colors.blue,
     borderRadius: 25,
     paddingLeft: 20,
     paddingRight: 20,

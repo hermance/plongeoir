@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import appActions from "./../../store/app.action-creator"
 import type TypeI18n from "./../../store/i18n/I18NReducer"
 import type UserType from "../../store/types"
+import ClassicButton from "../common/ClassicButton"
 import styles from "../common/styles"
 import colors from "../common/colors"
 //todo faire des package.json pour avoir du @store etc
@@ -42,6 +43,10 @@ class LoginScreen extends React.PureComponent<Props, State> {
         })
       }
     })
+  }
+
+  goToRegister = () => {
+    //TODO go to register screen
   }
 
   launchtabBasedApp = () => {
@@ -95,18 +100,23 @@ class LoginScreen extends React.PureComponent<Props, State> {
               secureTextEntry={true}
               onChangeText={text => this.setState({ password: text })}
             />
-            <View style={styles.classicButton}>
-              <Text style={styles.classicButtonText} onPress={this.connect}>
-                {i18n.t("login.button")}{" "}
-              </Text>
-            </View>
-            <ActivityIndicator
-              style={styles.loader}
-              size="large"
-              animating={isLoading}
+            <ClassicButton
+              onPress={this.connect}
+              name={i18n.t("login.button")}
               color={colors.blue}
             />
+            <ClassicButton
+              onPress={this.goToRegister}
+              name={i18n.t("login.register")}
+              color={colors.green}
+            />
           </View>
+          <ActivityIndicator
+            style={styles.loader}
+            size="large"
+            animating={isLoading}
+            color={colors.blue}
+          />
         </View>
       )
     } else {

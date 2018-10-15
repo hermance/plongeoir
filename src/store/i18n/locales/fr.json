@@ -4,6 +4,7 @@
    "button":"Connexion",
    "email":"email",
    "password":"password",
+   "register":"Inscription",
    "error":"Erreur lors de la connexion"
  } ,
   "home":{

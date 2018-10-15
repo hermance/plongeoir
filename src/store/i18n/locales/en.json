@@ -4,6 +4,7 @@
     "button":"Login",
     "email":"email",
     "password":"password",
+    "register":"Register",
     "error":"Login Failed"
   } ,
   "home":{

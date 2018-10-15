@@ -3,7 +3,8 @@
    "title":"Connexion",
    "button":"Connexion",
    "email":"email",
-   "password":"password"
+   "password":"password",
+   "error":"Erreur lors de la connexion"
  } ,
   "home":{
     "title":"titre home",

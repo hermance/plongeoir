@@ -3,7 +3,8 @@
     "title":"Login",
     "button":"Login",
     "email":"email",
-    "password":"password"
+    "password":"password",
+    "error":"Login Failed"
   } ,
   "home":{
     "title":"title home",

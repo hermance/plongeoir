@@ -6,6 +6,7 @@ import appActions from "./../../store/app.action-creator"
 import type TypeI18n from "./../../store/i18n/I18NReducer"
 import type UserType from "../../store/types"
 import styles from "../common/styles"
+import colors from "../common/colors"
 //todo faire des package.json pour avoir du @store etc
 
 type Props = {|
@@ -24,7 +25,8 @@ class LoginScreen extends React.PureComponent<Props, State> {
 
   state = {
     email: "",
-    password: ""
+    password: "",
+    noResult: false
   }
 
   connect = () => {
@@ -34,7 +36,9 @@ class LoginScreen extends React.PureComponent<Props, State> {
       if (res) {
         this.launchtabBasedApp()
       } else {
-        alert("login failded") //TODO gestion d'erreur
+        this.setState({
+          noResult: true
+        })
       }
     })
   }
@@ -62,20 +66,25 @@ class LoginScreen extends React.PureComponent<Props, State> {
 
   render() {
     const { i18n, user } = this.props
+    const { noResult } = this.state
     if (user !== null && !user) {
+      const inputBorderColor = noResult ? colors.red : colors.blue
       return (
         <View style={styles.app}>
           <Text style={styles.mainPageTitle}>{i18n.t("login.title")}</Text>
           <View style={styles.mainContent}>
+            {noResult && (
+              <Text style={styles.errorText}>{i18n.t("login.error")}</Text>
+            )}
             <TextInput
-              style={styles.inputs}
+              style={[styles.inputs, { borderColor: inputBorderColor }]}
               placeholder={i18n.t("login.email")}
               value={this.state.email}
               autoCapitalize="none"
               onChangeText={text => this.setState({ email: text })}
             />
             <TextInput
-              style={styles.inputs}
+              style={[styles.inputs, { borderColor: inputBorderColor }]}
               placeholder={i18n.t("login.password")}
               value={this.state.password}
               autoCapitalize="none"

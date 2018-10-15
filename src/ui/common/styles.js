@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20
   },
+  errorText: {
+    color: colors.red
+  },
   mainContent: {
     marginTop: 20
   },

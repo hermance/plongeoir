@@ -19,7 +19,8 @@ type Props = {|
 
 type State = {|
   password: string,
-  email: string
+  email: string,
+  noResult: boolean
 |}
 
 class LoginScreen extends React.PureComponent<Props, State> {
@@ -46,7 +47,9 @@ class LoginScreen extends React.PureComponent<Props, State> {
   }
 
   goToRegister = () => {
-    //TODO go to register screen test
+    this.props.navigator.push({
+      screen: "RegisterScreen"
+    })
   }
 
   launchtabBasedApp = () => {

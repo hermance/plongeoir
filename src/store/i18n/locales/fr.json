@@ -7,6 +7,11 @@
    "register":"Inscription",
    "error":"Erreur lors de la connexion"
  } ,
+  "register":{
+    "title":"Inscription",
+    "lastname": "Nom de famille",
+    "firstname":"Prénom"
+  },
   "home":{
     "title":"titre home",
     "hello":"Hello, "

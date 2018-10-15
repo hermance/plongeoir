@@ -1,6 +1,6 @@
 {
  "login":{
-   "title":"titre connexion",
+   "title":"Connexion",
    "button":"Connexion",
    "email":"email",
    "password":"password"

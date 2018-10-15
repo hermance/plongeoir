@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import appActions from "./../../store/app.action-creator"
 import type TypeI18n from "./../../store/i18n/I18NReducer"
 import type UserType from "../../store/types"
+import styles from "../common/styles"
 //todo faire des package.json pour avoir du @store etc
 
 type Props = {|
@@ -63,21 +64,25 @@ class LoginScreen extends React.PureComponent<Props, State> {
     const { i18n, user } = this.props
     if (user !== null && !user) {
       return (
-        <View style={{ marginTop: 20 }}>
-          <Text>{i18n.t("login.title")}</Text>
-          <TextInput
-            placeholder={i18n.t("login.email")}
-            value={this.state.email}
-            autoCapitalize="none"
-            onChangeText={text => this.setState({ email: text })}
-          />
-          <TextInput
-            placeholder={i18n.t("login.password")}
-            value={this.state.password}
-            autoCapitalize="none"
-            onChangeText={text => this.setState({ password: text })}
-          />
-          <Button onPress={this.connect} title={i18n.t("login.button")} />
+        <View style={styles.app}>
+          <Text style={styles.mainPageTitle}>{i18n.t("login.title")}</Text>
+          <View style={styles.mainContent}>
+            <TextInput
+              style={styles.inputs}
+              placeholder={i18n.t("login.email")}
+              value={this.state.email}
+              autoCapitalize="none"
+              onChangeText={text => this.setState({ email: text })}
+            />
+            <TextInput
+              style={styles.inputs}
+              placeholder={i18n.t("login.password")}
+              value={this.state.password}
+              autoCapitalize="none"
+              onChangeText={text => this.setState({ password: text })}
+            />
+            <Button onPress={this.connect} title={i18n.t("login.button")} />
+          </View>
         </View>
       )
     } else {

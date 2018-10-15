@@ -41,41 +41,43 @@ class RegisterScreen extends React.PureComponent<Props, State> {
 
   registerClick = () => {
     const { email, password, firstname, lastname } = this.state
-    /*const { register } = this.props
-    register(email, password, firstname, lastname).then(res => {
-      if (res) {
-        this.launchtabBasedApp()
-      } else {
+    const { register } = this.props
+    if (this.isValidForm) {
+      register(email, password, firstname, lastname).then(() => {
         this.setState({
-          error: true
+          error: false
         })
-      }
-    })*/
+        this.goToConnect()
+      }).catch(err => this.setState({
+          error: true
+      }))
+    } else {
+      this.setState({
+        error: true
+      })
+    }
+  }
+
+  isValidForm = () => {
+    const { email, password, firstname, lastname } = this.state
+    if (
+      email &&
+      email !== "" &&
+      password &&
+      password !== "" &&
+      firstname &&
+      firstname !== "" &&
+      lastname &&
+      lastname !== ""
+    ) {
+      //todo regex validation email et password
+      return true
+    }
+    return false
   }
 
   goToConnect = () => {
     this.props.navigator.popToRoot()
-  }
-
-  launchtabBasedApp = () => {
-    Navigation.startTabBasedApp({
-      tabs: [
-        {
-          label: "One",
-          screen: "SettingsScreen", // this is a registered name for a screen
-          icon: require("./../../../assets/img/ballon.png"),
-          selectedIcon: require("./../../../assets/img/ballon.png"),
-          title: "Screen One"
-        },
-        {
-          label: "Two",
-          screen: "HomeScreen",
-          icon: require("./../../../assets/img/sweet.png"),
-          selectedIcon: require("./../../../assets/img/sweet.png"),
-          title: "Screen Two"
-        }
-      ]
-    })
   }
 
   render() {
@@ -122,12 +124,12 @@ class RegisterScreen extends React.PureComponent<Props, State> {
             onChangeText={text => this.setState({ lastname: text })}
           />
           <ClassicButton
-            onPress={this.registerClick()}
+            onPress={() => this.registerClick()}
             name={i18n.t("login.register")}
             color={colors.blue}
           />
           <ClassicButton
-            onPress={this.goToConnect}
+            onPress={() => this.goToConnect}
             name={i18n.t("login.button")}
             color={colors.green}
           />

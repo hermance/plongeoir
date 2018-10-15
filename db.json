@@ -20,6 +20,13 @@
       "firstname": "David",
       "email": "david.tennant@tardis.gf",
       "password": "test"
+    },
+    {
+      "email": "testemail@tardis.gf",
+      "password": "password",
+      "firstname": "Test",
+      "lastname": "Tester",
+      "id": 8
     }
   ]
 }

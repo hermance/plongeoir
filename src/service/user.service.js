@@ -22,6 +22,29 @@ class UserService {
         }
       })
   }
+  static register = (
+    email: string,
+    password: string,
+    firstname: string,
+    lastname: string
+  ): Promise<*> => {
+    const url = config.url + USER_ENDPOINT
+    return fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        firstname: firstname,
+        lastname: lastname
+      })
+    }).then(res => {
+      return res
+    })
+  }
   static getUsers = (): Promise<*> => {
     const url = config.url + USER_ENDPOINT
     return new Promise(function(resolve, reject) {

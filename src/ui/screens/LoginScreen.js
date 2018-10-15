@@ -35,15 +35,21 @@ class LoginScreen extends React.PureComponent<Props, State> {
   connect = () => {
     const { email, password } = this.state
     const { login } = this.props
-    login(email, password).then(res => {
-      if (res) {
-        this.launchtabBasedApp()
-      } else {
-        this.setState({
-          noResult: true
-        })
-      }
-    })
+    if (email && email !== "" && password && password !== "") {
+      login(email, password).then(res => {
+        if (res) {
+          this.launchtabBasedApp()
+        } else {
+          this.setState({
+            noResult: true
+          })
+        }
+      })
+    } else {
+      this.setState({
+        noResult: true
+      })
+    }
   }
 
   goToRegister = () => {

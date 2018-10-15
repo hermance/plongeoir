@@ -41,8 +41,20 @@ const appActions = {
   logout: () => (dispatch: Dispatch<any>): void => {
     return dispatch(logout())
   },
+  register: (
+    email: string,
+    password: string,
+    firstname: string,
+    lastname: string
+  ) => (dispatch: Dispatch<any>): void => {
+    dispatch(toggleLoad(true))
+    return UserService.register(email, password, firstname, lastname)
+      .then(() => {
+        dispatch(toggleLoad(false))
+      })
+      .catch(err => Promise.reject(err))
+  },
   toggleLoad: (isLoading: boolean) => (dispatch: Dispatch<any>): void => {
-    //TODO pour un loader global , à implémenter côté ui
     dispatch(toggleLoad(isLoading))
   }
 }

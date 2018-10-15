@@ -60,7 +60,6 @@ class LoginScreen extends React.PureComponent<Props, State> {
   }
 
   render() {
-    //TODO si on a un user dans le store, appeler launchtabBasedApp, sinon render
     const { i18n, user } = this.props
     if (user !== null && !user) {
       return (

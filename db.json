@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "lastname": "Tyler",
+      "firstname": "Rose",
+      "email": "rose.tyler@tardis.gf",
+      "password": "test"
+    },
+    {
+      "id": 2,
+      "lastname": "Smith",
+      "firstname": "Matt",
+      "email": "matt.smith@tardis.gf",
+      "password": "test"
+    },
+    {
+      "id": 3,
+      "lastname": "Tenant",
+      "firstname": "David",
+      "email": "david.tennant@tardis.gf",
+      "password": "test"
+    }
+  ]
+}

@@ -59,17 +59,18 @@ class LoginScreen extends React.PureComponent<Props, State> {
   }
 
   launchtabBasedApp = () => {
+    const { i18n } = this.props
     Navigation.startTabBasedApp({
       tabs: [
         {
-          label: "One",
+          label: i18n.t("settings.title"),
           screen: "SettingsScreen", // this is a registered name for a screen
           icon: require("./../../../assets/img/ballon.png"),
           selectedIcon: require("./../../../assets/img/ballon.png"),
           title: "Screen One"
         },
         {
-          label: "Two",
+          label: i18n.t("home.title"),
           screen: "HomeScreen",
           icon: require("./../../../assets/img/sweet.png"),
           selectedIcon: require("./../../../assets/img/sweet.png"),

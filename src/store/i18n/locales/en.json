@@ -1,10 +1,17 @@
 {
   "login":{
-    "title":"title login",
+    "title":"Login",
     "button":"Login",
     "email":"email",
-    "password":"password"
+    "password":"password",
+    "register":"Register",
+    "error":"Login Failed"
   } ,
+  "register":{
+    "title":"Register",
+    "lastname": "Last Name",
+    "firstname":"First Name"
+  },
   "home":{
     "title":"title home",
     "hello":"Hello, "

@@ -1,21 +1,26 @@
 import React, { Component } from "react"
-import { Text, View, Button, TextInput } from "react-native"
+import { Text, View, ActivityIndicator, TextInput } from "react-native"
 import { Navigation } from "react-native-navigation"
 import { connect } from "react-redux"
 import appActions from "./../../store/app.action-creator"
 import type TypeI18n from "./../../store/i18n/I18NReducer"
 import type UserType from "../../store/types"
+import ClassicButton from "../common/ClassicButton"
+import styles from "../common/styles"
+import colors from "../common/colors"
 //todo faire des package.json pour avoir du @store etc
 
 type Props = {|
   +i18n: TypeI18n,
   login: (email: string, password: string) => Promise<*>,
-  user: UserType
+  user: UserType,
+  isLoading: boolean
 |}
 
 type State = {|
   password: string,
-  email: string
+  email: string,
+  noResult: boolean
 |}
 
 class LoginScreen extends React.PureComponent<Props, State> {
@@ -23,18 +28,33 @@ class LoginScreen extends React.PureComponent<Props, State> {
 
   state = {
     email: "",
-    password: ""
+    password: "",
+    noResult: false
   }
 
   connect = () => {
     const { email, password } = this.state
     const { login } = this.props
-    login(email, password).then(res => {
-      if (res) {
-        this.launchtabBasedApp()
-      } else {
-        alert("login failded") //TODO gestion d'erreur
-      }
+    if (email && email !== "" && password && password !== "") {
+      login(email, password).then(res => {
+        if (res) {
+          this.launchtabBasedApp()
+        } else {
+          this.setState({
+            noResult: true
+          })
+        }
+      })
+    } else {
+      this.setState({
+        noResult: true
+      })
+    }
+  }
+
+  goToRegister = () => {
+    this.props.navigator.push({
+      screen: "RegisterScreen"
     })
   }
 
@@ -60,25 +80,52 @@ class LoginScreen extends React.PureComponent<Props, State> {
   }
 
   render() {
-    //TODO si on a un user dans le store, appeler launchtabBasedApp, sinon render
-    const { i18n, user } = this.props
+    const { i18n, user, isLoading } = this.props
+    const { noResult } = this.state
     if (user !== null && !user) {
+      const inputBorderColor = noResult ? colors.red : colors.blue
       return (
-        <View style={{ marginTop: 20 }}>
-          <Text>{i18n.t("login.title")}</Text>
-          <TextInput
-            placeholder={i18n.t("login.email")}
-            value={this.state.email}
-            autoCapitalize="none"
-            onChangeText={text => this.setState({ email: text })}
+        <View style={styles.app}>
+          <Text style={styles.mainPageTitle}>{i18n.t("login.title")}</Text>
+          <View style={styles.mainContent}>
+            {noResult && (
+              <Text style={styles.errorText}>{i18n.t("login.error")}</Text>
+            )}
+            <TextInput
+              style={[styles.inputs, { borderColor: inputBorderColor }]}
+              placeholder={i18n.t("login.email")}
+              value={this.state.email}
+              autoCapitalize="none"
+              textContentType="emailAddress"
+              keyboardType="email-address"
+              onChangeText={text => this.setState({ email: text })}
+            />
+            <TextInput
+              style={[styles.inputs, { borderColor: inputBorderColor }]}
+              placeholder={i18n.t("login.password")}
+              value={this.state.password}
+              autoCapitalize="none"
+              textContentType="password"
+              secureTextEntry={true}
+              onChangeText={text => this.setState({ password: text })}
+            />
+            <ClassicButton
+              onPress={this.connect}
+              name={i18n.t("login.button")}
+              color={colors.blue}
+            />
+            <ClassicButton
+              onPress={this.goToRegister}
+              name={i18n.t("login.register")}
+              color={colors.green}
+            />
+          </View>
+          <ActivityIndicator
+            style={styles.loader}
+            size="large"
+            animating={isLoading}
+            color={colors.blue}
           />
-          <TextInput
-            placeholder={i18n.t("login.password")}
-            value={this.state.password}
-            autoCapitalize="none"
-            onChangeText={text => this.setState({ password: text })}
-          />
-          <Button onPress={this.connect} title={i18n.t("login.button")} />
         </View>
       )
     } else {
@@ -91,6 +138,7 @@ class LoginScreen extends React.PureComponent<Props, State> {
 const mapStateToProps = (state: any) => {
   return {
     i18n: state.i18n,
+    isLoading: state.app.isLoading,
     user: state.app.user
   }
 }

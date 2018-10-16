@@ -57,7 +57,10 @@ const styles = StyleSheet.create({
   },
   book: {
     alignItems: "center",
-    margin: 10
+    margin: 10,
+    padding: 10,
+    backgroundColor: colors.lightGrey,
+    borderRadius: 5
   }
 })
 export default styles

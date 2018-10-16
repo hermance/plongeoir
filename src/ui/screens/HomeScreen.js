@@ -34,7 +34,7 @@ class HomeScreen extends React.PureComponent<Props, void> {
         {books && (
           <FlatList
             data={books}
-            renderItem={({ item }) => <Book book={item} />}
+            renderItem={({ item }) => <Book book={item} i18n={i18n} />}
             keyExtractor={(item, index) => item.title + index}
           />
         )}

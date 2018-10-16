@@ -19,5 +19,8 @@
   "settings":{
     "title":"titre réglages",
     "logout":"Déconnexion"
+  },
+  "book":{
+    "lend":"Réserver"
   }
 }

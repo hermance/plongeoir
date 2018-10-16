@@ -41,9 +41,23 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     marginTop: 20
   },
+  bookButton: {
+    alignItems: "center",
+    borderRadius: 15,
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingTop: 7,
+    paddingBottom: 7,
+    marginTop: 10,
+    backgroundColor: colors.blue
+  },
   classicButtonText: {
     color: colors.white,
     fontSize: 18
+  },
+  bookButtonText: {
+    color: colors.white,
+    fontSize: 13
   },
   loader: {
     position: "absolute",

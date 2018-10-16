@@ -19,5 +19,8 @@
   "settings":{
     "title":"title settings",
     "logout":"logout"
+  },
+  "book":{
+    "lend":"Lend"
   }
 }

@@ -49,6 +49,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: DEVICE_HEIGHT / 2 - 30,
     left: DEVICE_WIDTH / 2 - 30
+  },
+  picture: {
+    width: 88,
+    height: 130,
+    backgroundColor: colors.blue
+  },
+  book: {
+    alignItems: "center",
+    margin: 10
   }
 })
 export default styles

@@ -6,6 +6,7 @@ import type TypeI18n from "../../store/i18n/I18NReducer"
 import { Navigation } from "react-native-navigation"
 import type UserType from "../../store/types"
 import users from "../../store/users/user.reducer"
+import styles from "../common/styles"
 
 type Props = {|
   +i18n: TypeI18n,
@@ -34,7 +35,7 @@ class SettingsScreen extends React.PureComponent<Props, void> {
   render() {
     const { i18n, user } = this.props
     return (
-      <View style={{ marginTop: 30 }}>
+      <View style={styles.app}>
         <Text>{i18n.t("settings.title")}</Text>
         <Button
           title={i18n.t("settings.logout")}

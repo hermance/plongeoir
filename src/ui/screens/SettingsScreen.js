@@ -1,10 +1,11 @@
 import React, { Component } from "react"
 import { Text, View, Button } from "react-native"
 import { connect } from "react-redux"
-import appActions from "../../store/app.action-creator"
+import userActions from "../../store/users/user.action-creator"
 import type TypeI18n from "../../store/i18n/I18NReducer"
 import { Navigation } from "react-native-navigation"
 import type UserType from "../../store/types"
+import users from "../../store/users/user.reducer"
 
 type Props = {|
   +i18n: TypeI18n,
@@ -49,12 +50,12 @@ class SettingsScreen extends React.PureComponent<Props, void> {
 const mapStateToProps = (state: any) => {
   return {
     i18n: state.i18n,
-    user: state.app.user
+    user: state.users.user
   }
 }
 const mapDispatchToProps = () => (dispatch: any) => {
   return {
-    logout: () => dispatch(appActions.logout())
+    logout: () => dispatch(userActions.logout())
   }
 }
 export default connect(

@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Text, View } from "react-native"
 import { connect } from "react-redux"
 import type TypeI18n from "../../store/i18n/I18NReducer"
+import users from "../../store/users/user.reducer"
 
 type Props = {|
   +i18n: TypeI18n,
@@ -32,7 +33,7 @@ class HomeScreen extends React.PureComponent<Props, void> {
 const mapStateToProps = (state: any) => {
   return {
     i18n: state.i18n,
-    user: state.app.user
+    user: state.users.user
   }
 }
 const mapDispatchToProps = () => (dispatch: any) => {

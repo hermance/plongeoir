@@ -1,5 +1,5 @@
-import appActions from "./app.action-creator"
-import userActions from "./user.action-creator"
+import appActions from "./app/app.action-creator"
+import userActions from "./users/user.action-creator"
 
 export default {
   appActions,

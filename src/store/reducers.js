@@ -1,11 +1,11 @@
 import { combineReducers } from "redux"
 import i18n from "./i18n/I18NReducer"
-import app from "./app.reducer"
-import user from "./user.reducer"
+import app from "./app/app.reducer"
+import users from "./users/user.reducer"
 
 const reducers = combineReducers({
   app,
-  user,
+  users,
   i18n
 })
 

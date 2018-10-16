@@ -2,12 +2,13 @@ import React, { Component } from "react"
 import { Text, View, ActivityIndicator, TextInput } from "react-native"
 import { Navigation } from "react-native-navigation"
 import { connect } from "react-redux"
-import userActions from "./../../store/user.action-creator"
+import userActions from "../../store/users/user.action-creator"
 import type TypeI18n from "./../../store/i18n/I18NReducer"
 import type UserType from "../../store/types"
 import ClassicButton from "../common/ClassicButton"
 import styles from "../common/styles"
 import colors from "../common/colors"
+import users from "../../store/users/user.reducer"
 //todo faire des package.json pour avoir du @store etc
 
 type Props = {|
@@ -139,7 +140,7 @@ const mapStateToProps = (state: any) => {
   return {
     i18n: state.i18n,
     isLoading: state.app.isLoading,
-    user: state.app.user
+    user: state.users.user
   }
 }
 const mapDispatchToProps = () => (dispatch: any) => {

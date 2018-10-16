@@ -1,10 +1,10 @@
 import type { Dispatch } from "redux"
-import UserService from "../service/user.service"
+import UserService from "../../service/user.service"
 export const TOGGLE_LOAD = "TOGGLE_LOAD"
 export const LOGIN = "LOGIN"
 export const LOGOUT = "LOGOUT"
-import type UserType from "./types"
-import appActions from "./app.action-creator"
+import type UserType from "../types"
+import appActions from "../app/app.action-creator"
 
 function login(user: UserType) {
   return {
@@ -22,10 +22,10 @@ const userActions = {
   login: (email: string, password: string) => (
     dispatch: Dispatch<any>
   ): void => {
-    dispatch(toggleLoad(true))
+    dispatch(appActions.toggleLoad(true))
     return UserService.login(email, password)
       .then(user => {
-        dispatch(toggleLoad(false))
+        dispatch(appActions.toggleLoad(false))
         if (user) {
           return dispatch(login(user))
         }
@@ -42,7 +42,7 @@ const userActions = {
     firstname: string,
     lastname: string
   ) => (dispatch: Dispatch<any>): void => {
-    dispatch(toggleLoad(true))
+    dispatch(appActions.toggleLoad(true))
     return UserService.register(email, password, firstname, lastname)
       .then(() => {
         dispatch(appActions.toggleLoad(false))

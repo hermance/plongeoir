@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Text, View, ActivityIndicator, TextInput } from "react-native"
 import { Navigation } from "react-native-navigation"
 import { connect } from "react-redux"
-import appActions from "./../../store/app.action-creator"
+import userActions from "./../../store/user.action-creator"
 import type TypeI18n from "./../../store/i18n/I18NReducer"
 import type UserType from "../../store/types"
 import ClassicButton from "../common/ClassicButton"
@@ -145,7 +145,7 @@ const mapStateToProps = (state: any) => {
 const mapDispatchToProps = () => (dispatch: any) => {
   return {
     login: (email: string, password: string) =>
-      dispatch(appActions.login(email, password))
+      dispatch(userActions.login(email, password))
   }
 }
 export default connect(

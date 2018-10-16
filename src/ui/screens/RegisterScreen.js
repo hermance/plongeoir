@@ -1,8 +1,8 @@
-import React, { Component } from "react"
+import React from "react"
 import { Text, View, ActivityIndicator, TextInput } from "react-native"
 import { Navigation } from "react-native-navigation"
 import { connect } from "react-redux"
-import appActions from "./../../store/app.action-creator"
+import userActions from "./../../store/user.action-creator"
 import type TypeI18n from "./../../store/i18n/I18NReducer"
 import ClassicButton from "../common/ClassicButton"
 import styles from "../common/styles"
@@ -191,9 +191,9 @@ const mapDispatchToProps = () => (dispatch: any) => {
       password: string,
       firstname: string,
       lastname: string
-    ) => dispatch(appActions.register(email, password, firstname, lastname)),
+    ) => dispatch(userActions.register(email, password, firstname, lastname)),
     login: (email: string, password: string) =>
-      dispatch(appActions.login(email, password))
+      dispatch(userActions.login(email, password))
   }
 }
 export default connect(

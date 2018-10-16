@@ -11,6 +11,11 @@ type Props = {|
 class HomeScreen extends React.PureComponent<Props, void> {
   static navigatorStyle = { tabBarHidden: false, navBarHidden: true }
 
+  constructor(props) {
+    super(props)
+    //todo call à Books
+  }
+
   render() {
     const { i18n, user } = this.props
     return (

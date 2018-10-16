@@ -7,6 +7,7 @@ import type TypeI18n from "./../../store/i18n/I18NReducer"
 import ClassicButton from "../common/ClassicButton"
 import styles from "../common/styles"
 import colors from "../common/colors"
+import { validateEmail, validatePassword } from "../../utils/utils"
 //todo faire des package.json pour avoir du @store etc
 
 type Props = {|
@@ -17,7 +18,8 @@ type Props = {|
     firstname: string,
     lastname: string
   ) => Promise<*>,
-  isLoading: boolean
+  isLoading: boolean,
+  login: (email: string, password: string) => Promise<*>
 |}
 
 type State = {|
@@ -41,16 +43,28 @@ class RegisterScreen extends React.PureComponent<Props, State> {
 
   registerClick = () => {
     const { email, password, firstname, lastname } = this.state
-    const { register } = this.props
-    if (this.isValidForm) {
-      register(email, password, firstname, lastname).then(() => {
-        this.setState({
-          error: false
+    const { register, login } = this.props
+    if (this.isValidForm()) {
+      register(email, password, firstname, lastname)
+        .then(() => {
+          this.setState({
+            error: false
+          })
+          login(email, password).then(res => {
+            if (res) {
+              this.launchtabBasedApp()
+            } else {
+              this.setState({
+                error: true
+              })
+            }
+          })
         })
-        this.goToConnect()
-      }).catch(err => this.setState({
-          error: true
-      }))
+        .catch(err =>
+          this.setState({
+            error: true
+          })
+        )
     } else {
       this.setState({
         error: true
@@ -58,22 +72,41 @@ class RegisterScreen extends React.PureComponent<Props, State> {
     }
   }
 
+  launchtabBasedApp = () => {
+    Navigation.startTabBasedApp({
+      tabs: [
+        {
+          label: "One",
+          screen: "SettingsScreen", // this is a registered name for a screen
+          icon: require("./../../../assets/img/ballon.png"),
+          selectedIcon: require("./../../../assets/img/ballon.png"),
+          title: "Screen One"
+        },
+        {
+          label: "Two",
+          screen: "HomeScreen",
+          icon: require("./../../../assets/img/sweet.png"),
+          selectedIcon: require("./../../../assets/img/sweet.png"),
+          title: "Screen Two"
+        }
+      ]
+    })
+  }
+
   isValidForm = () => {
     const { email, password, firstname, lastname } = this.state
-    if (
+    return (
       email &&
       email !== "" &&
+      validateEmail(email) &&
       password &&
       password !== "" &&
+      validatePassword(password) &&
       firstname &&
       firstname !== "" &&
       lastname &&
       lastname !== ""
-    ) {
-      //todo regex validation email et password
-      return true
-    }
-    return false
+    )
   }
 
   goToConnect = () => {
@@ -129,7 +162,7 @@ class RegisterScreen extends React.PureComponent<Props, State> {
             color={colors.blue}
           />
           <ClassicButton
-            onPress={() => this.goToConnect}
+            onPress={() => this.goToConnect()}
             name={i18n.t("login.button")}
             color={colors.green}
           />
@@ -158,7 +191,9 @@ const mapDispatchToProps = () => (dispatch: any) => {
       password: string,
       firstname: string,
       lastname: string
-    ) => dispatch(appActions.register(email, password, firstname, lastname))
+    ) => dispatch(appActions.register(email, password, firstname, lastname)),
+    login: (email: string, password: string) =>
+      dispatch(appActions.login(email, password))
   }
 }
 export default connect(

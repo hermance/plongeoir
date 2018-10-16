@@ -11,7 +11,7 @@ const reducer = (state = initialState, action): any => {
       isLoading: action.isLoading
     }
   }
-  return initialState
+  return state
 }
 
 export default reducer

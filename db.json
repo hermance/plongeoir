@@ -28,5 +28,25 @@
       "lastname": "Tester",
       "id": 8
     }
+  ],
+  "books":[
+    {
+      "id":1,
+      "title":"The Name Of the Wind",
+      "author":"Patrick Rothfuss",
+      "picture":"https://images-na.ssl-images-amazon.com/images/I/51JThzjy3gL._SX306_BO1,204,203,200_.jpg"
+    },
+    {
+      "id":2,
+      "title":"The Doors Of Stone",
+      "author":"Patrick Rothfuss",
+      "picture":""
+    },
+    {
+      "id":3,
+      "title":"The Wise Man Fear",
+      "author":"Patrick Rothfuss",
+      "picture":"https://images-na.ssl-images-amazon.com/images/I/81NX-69L22L.jpg"
+    }
   ]
 }

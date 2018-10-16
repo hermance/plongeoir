@@ -13,10 +13,10 @@ function getBooks(books: BookType) {
 
 const bookActions = {
   getBooks: () => (dispatch: Dispatch<any>): void => {
-    dispatch(appActions.toggleLoad(true))
+    //dispatch(appActions.toggleLoad(true))
     return BookService.getBooks()
       .then(books => {
-        dispatch(appActions.toggleLoad(false))
+        //dispatch(appActions.toggleLoad(false))
         if (books) {
           return dispatch(getBooks(books))
         }

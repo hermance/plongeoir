@@ -8,7 +8,6 @@ import type UserType from "../../store/types"
 import ClassicButton from "../common/ClassicButton"
 import styles from "../common/styles"
 import colors from "../common/colors"
-import users from "../../store/users/user.reducer"
 //todo faire des package.json pour avoir du @store etc
 
 type Props = {|

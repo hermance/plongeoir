@@ -5,6 +5,12 @@ const types = {
     lastname: string,
     email: string,
     password: string
+  },
+  BookType: {
+    id: number,
+    title: string,
+    author: string,
+    picture: string
   }
 }
 

@@ -15,7 +15,7 @@ const reducer = (state = initialState, action): any => {
       user: undefined
     }
   }
-  return initialState
+  return state
 }
 
 export default reducer

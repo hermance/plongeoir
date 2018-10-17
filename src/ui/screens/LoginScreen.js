@@ -26,6 +26,8 @@ type State = {|
 class LoginScreen extends React.PureComponent<Props, State> {
   static navigatorStyle = { navBarHidden: true, tabBarHidden: true }
 
+  //todo soucis de persistence du loader à régler !
+
   state = {
     email: "",
     password: "",
@@ -96,8 +98,12 @@ class LoginScreen extends React.PureComponent<Props, State> {
               style={[styles.inputs, { borderColor: inputBorderColor }]}
               placeholder={i18n.t("login.email")}
               value={this.state.email}
+              onSubmitEditing={() => {
+                this.secondTextInput && this.secondTextInput.focus()
+              }}
               autoCapitalize="none"
               textContentType="emailAddress"
+              returnKeyType="next"
               keyboardType="email-address"
               onChangeText={text => this.setState({ email: text })}
             />
@@ -106,8 +112,15 @@ class LoginScreen extends React.PureComponent<Props, State> {
               placeholder={i18n.t("login.password")}
               value={this.state.password}
               autoCapitalize="none"
+              ref={input => {
+                this.secondTextInput = input
+              }}
               textContentType="password"
+              returnKeyType="done"
               secureTextEntry={true}
+              onSubmitEditing={() => {
+                this.connect()
+              }}
               onChangeText={text => this.setState({ password: text })}
             />
             <ClassicButton

@@ -131,6 +131,10 @@ class RegisterScreen extends React.PureComponent<Props, State> {
             value={this.state.email}
             autoCapitalize="none"
             textContentType="emailAddress"
+            returnKeyType="next"
+            onSubmitEditing={() => {
+              this.secondTextInput && this.secondTextInput.focus()
+            }}
             keyboardType="email-address"
             onChangeText={text => this.setState({ email: text })}
           />
@@ -139,7 +143,14 @@ class RegisterScreen extends React.PureComponent<Props, State> {
             placeholder={i18n.t("login.password")}
             value={this.state.password}
             autoCapitalize="none"
+            ref={input => {
+              this.secondTextInput = input
+            }}
+            onSubmitEditing={() => {
+              this.thirdTextInput && this.secondTextInput.focus()
+            }}
             textContentType="password"
+            returnKeyType="next"
             secureTextEntry={true}
             onChangeText={text => this.setState({ password: text })}
           />
@@ -147,13 +158,21 @@ class RegisterScreen extends React.PureComponent<Props, State> {
             style={[styles.inputs, { borderColor: inputBorderColor }]}
             placeholder={i18n.t("register.firstname")}
             value={this.state.firstname}
+            ref={input => {
+              this.thirdTextInput = input
+            }}
             autoCapitalize="none"
+            returnKeyType="next"
             onChangeText={text => this.setState({ firstname: text })}
           />
           <TextInput
             style={[styles.inputs, { borderColor: inputBorderColor }]}
             placeholder={i18n.t("register.lastname")}
             value={this.state.lastname}
+            returnKeyType="done"
+            onSubmitEditing={() => {
+              this.registerClick()
+            }}
             autoCapitalize="none"
             onChangeText={text => this.setState({ lastname: text })}
           />

@@ -22,5 +22,8 @@
   },
   "book":{
     "lend":"Lend"
+  },
+  "scan":{
+    "title":"Scan a book"
   }
 }

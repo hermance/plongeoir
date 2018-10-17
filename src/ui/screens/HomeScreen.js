@@ -37,6 +37,7 @@ class HomeScreen extends React.PureComponent<Props, void> {
             renderItem={({ item }) => <Book book={item} i18n={i18n} />}
             keyExtractor={(item, index) => item.title + index}
             showsVerticalScrollIndicator={false}
+            style={{ marginBottom: 40 }}
           />
         )}
       </View>

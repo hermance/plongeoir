@@ -81,14 +81,21 @@ class RegisterScreen extends React.PureComponent<Props, State> {
           screen: "SettingsScreen", // this is a registered name for a screen
           icon: require("./../../../assets/img/ballon.png"),
           selectedIcon: require("./../../../assets/img/ballon.png"),
-          title: "Screen One"
+          title: i18n.t("settings.title")
         },
         {
           label: i18n.t("home.title"),
           screen: "HomeScreen",
           icon: require("./../../../assets/img/sweet.png"),
           selectedIcon: require("./../../../assets/img/sweet.png"),
-          title: "Screen Two"
+          title: i18n.t("home.title")
+        },
+        {
+          label: i18n.t("scan.title"),
+          screen: "ScanBookScreen",
+          icon: require("./../../../assets/img/sweet.png"),
+          selectedIcon: require("./../../../assets/img/sweet.png"),
+          title: i18n.t("scan.title")
         }
       ]
     })

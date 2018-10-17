@@ -22,5 +22,8 @@
   },
   "book":{
     "lend":"Réserver"
+  },
+  "scan":{
+    "title":"Scanne un livre"
   }
 }

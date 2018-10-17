@@ -2,6 +2,7 @@ import { Navigation } from 'react-native-navigation';
 import LoginScreen from "./src/ui/screens/LoginScreen";
 import HomeScreen from "./src/ui/screens/HomeScreen";
 import SettingsScreen from "./src/ui/screens/SettingsScreen"
+import ScanBookScreen from "./src/ui/screens/ScanBookScreen"
 import RegisterScreen from "./src/ui/screens/RegisterScreen"
 import { Provider, connect } from "react-redux"
 
@@ -10,6 +11,7 @@ registerScreens = (store: any) => {
     Navigation.registerComponent('HomeScreen', () => HomeScreen, store, Provider);
     Navigation.registerComponent('SettingsScreen', () => SettingsScreen, store, Provider);
     Navigation.registerComponent('RegisterScreen', () => RegisterScreen, store, Provider);
+    Navigation.registerComponent('ScanBookScreen', () => ScanBookScreen, store, Provider);
 }
 export default (store: any) => {
     registerScreens(store)
